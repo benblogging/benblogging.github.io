@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hitung harga per satuan isi</title>
+    <script>
+        function hitung(){
+            var barang=document.getElementById('namabarang');
+            var satuan=document.getElementById('satuan').value;
+            var jmlperk=document.getElementById('jumlahperkemasan');
+            var harga1kemasan=document.getElementById('harga1kemasan');
+            var result=(harga1kemasan.value/jmlperk.value).toLocaleString('id');
+            var resultloc=document.getElementById('result');
+            document.getElementById('reaw').innerHTML='Harga '+barang.value+' per '+satuan+' adalah';
+            resultloc.innerHTML='Rp '+result+'/'+satuan;
+        }
+    </script>
+    <style>
+        *{padding:0;margin:0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;}
+        .container{padding:1rem 3rem;}
+        a{text-decoration: none;}
+        header {
+            padding: 10px 15px;
+            background: #115094;
+            color: #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header .headertitle{font-weight: bold;}
+        header a{color:#ddd}
+        section.form {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 35px;
+        }
+        section.form input,section.form select{
+            height: 30px;
+            max-width: 50%;
+            margin-bottom: 14px;
+            padding:0 5px;
+        }
+        section.form input:focus,section.form select:focus{
+            border-color:#115094;
+        }
+        section.form label {
+            position: relative;
+            top: 8px;
+            left:5px;
+            font-size: 8.5pt;
+            background: #fff;
+            width: max-content;
+            color:#115094;
+            padding: 0 3px;
+        }
+        section.form button{
+            width: max-content;
+            padding:5px 15px;
+        }
+        p#reaw {
+            font-size: 15pt;
+        }
+        .results {
+            font-size: 20pt;
+            font-weight: bold;
+        }
+        @media(max-width:600px){
+            section.form input,section.form select{
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <span class="headertitle">Hitung 1</span>
+        <a class="homebutton" href="/">home</a>
+    </header>
+    <div class="container">
+        <section class="form">
+            <label for="namabarang">Nama barang</label>
+            <input type="text" name="namabarang" id="namabarang">
+            <label for="satuan">Satuan isi</label>
+            <select name="satuan" id="satuan">
+                <option value="gram">gram</option>
+                <option value="liter">liter</option>
+                <option value="ml">ml</option>
+                <option value="bungkus">bungkus</option>
+                <option value="buah">buah</option>
+            </select>
+            <label for="jumlahperkemasan">Banyaknya dalam 1 kemasan</label>
+            <input type="number" name="jumlahperkemasan" id="jumlahperkemasan">
+            <label for="harga1kemasan">Harga 1 kemasan</label>
+            <input type="number" name="harga1kemasan" id="harga1kemasan">
+            <button onclick="hitung()">Hitung</button>
+        </section>
+        <section class="result">
+            <p id="reaw"></p>
+            <span id="result" class="results"></span>
+        </section>
+    </div>
+</body>
+</html>
