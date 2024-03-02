@@ -11,10 +11,9 @@ const firebaseConfig = {
   appId: "1:812739481649:web:0861afd4b3e1c4ecdbc510",
   measurementId: "G-TJ6F9NWXR7"
 };
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
 export async function getFirestoreDB(dataName){
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
   let firestore=getFirestore();
   const dataLocation=doc(firestore, `la-data/${dataName}`);
   const dataTop=await getDoc(dataLocation);
