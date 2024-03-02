@@ -2,7 +2,7 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.1/firebas
 import { getAnalytics } from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-analytics.js'
 import { getAuth } from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js'
 import { getFirestore, getDoc, doc } from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js'
-export const firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyA6E8BW8L4ClmHMU58fux15uFLFGK3TM74",
   authDomain: "la-blog-55073.firebaseapp.com",
   projectId: "la-blog-55073",
