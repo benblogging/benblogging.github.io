@@ -16,7 +16,9 @@ const analytics = getAnalytics(app);
 export async function getFirestoreDB(dataName){
   let firestore=getFirestore();
   const dataLocation=doc(firestore, `la-data/${dataName}`);
+  console.log(dataLocation);
   const dataTop=await getDoc(dataLocation);
+  console.log(dataTop);
   const dataJSON=dataTop.data();
   return dataJSON;
 }
