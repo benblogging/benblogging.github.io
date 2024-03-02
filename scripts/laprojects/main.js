@@ -20,5 +20,7 @@ export async function getFirestoreDB(dataName){
   const dataTop=await getDoc(dataLocation);
   console.log(dataTop);
   const dataJSON=dataTop.data();
+  console.log{`"dataJSON" = 
+  ${dataJSON}`}
   return dataJSON;
 }
