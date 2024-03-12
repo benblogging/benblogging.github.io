@@ -1,7 +1,6 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js'
-import { getAnalytics } from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-analytics.js'
 import { getAuth } from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js'
-import { getFirestore, getDoc, doc } from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js'
+import { getFirestore, getDocs, where, and } from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js'
 const firebaseConfig = {
   apiKey: "AIzaSyA6E8BW8L4ClmHMU58fux15uFLFGK3TM74",
   authDomain: "la-blog-55073.firebaseapp.com",
@@ -12,11 +11,30 @@ const firebaseConfig = {
   measurementId: "G-TJ6F9NWXR7"
 };
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+let condition={
+  where:[["x","==","y"],["z","=="]]
+}
+async function getDB(nw='la-resources',condition=null){
+  let db=await getFirestore();
+  let col=await collection(db,nw);
+  let qx;
+  if(condition){
+    if(conditon.where.length===1){
+      qx=query(col,where(condition.where[0][0],condition.where[0][1],condition.where[0][2]));
+    }
+    else if(conditon.where.length===2){
+      qx=query(col,and(where(condition.where[0][0],condition.where[0][1],condition.where[0][2]),where(condition.where[1][0],condition.where[1][1],condition.where[1][2])));
+    }
+  }
+  else{qx=col}
+  let q=query(qx, orderBy("resource_id", "asc"))
+}
 export async function getFirestoreDB(dataName){
-  let firestore=getFirestore();
-  const dataLocation=doc(firestore, `la-data/${dataName}`);
-  const dataTop=await getDoc(dataLocation);
-  const dataJSON=dataTop.data();
-  return dataJSON;
+  let mpj=await getDocs(await getDB(dataName));
+  let mpjd=mpj.docs;
+  let dbdata=[];
+  for(let slg of mpjd){
+    dbdata.push({ ...slg.data()})
+  }
+  return dbdata;
 }
