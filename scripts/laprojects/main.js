@@ -29,7 +29,7 @@ async function getDB(nw='la-resources',condition=null){
   else{qx=col}
   let q=query(qx, orderBy("resource_id", "asc"))
 }
-export async function getFirestoreDB(dataName,condition=null;){
+export async function getFirestoreDB(dataName,condition=null){
   let mpj=await getDocs(await getDB(dataName,condition));
   let mpjd=mpj.docs;
   let dbdata=[];
