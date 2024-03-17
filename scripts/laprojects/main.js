@@ -14,6 +14,7 @@ const app = initializeApp(firebaseConfig);
   where:[["x","==","y"],["z","=="]]
 }*/
 async function getDB(nw='la-resources',condition=null){
+  console.log(`condition (s): ${condition}`)
   let db=await getFirestore();
   let col=await collection(db,nw);
   let qx;
