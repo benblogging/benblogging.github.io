@@ -19,6 +19,7 @@ async function getDB(nw='la-resources',condition=null){
   let qx;
   if(condition){
     if(conditon.where.length===1){
+      console.log(condition.where[0][0])
       qx=query(col,where(condition.where[0][0],condition.where[0][1],condition.where[0][2]));
     }
     else if(conditon.where.length===2){
