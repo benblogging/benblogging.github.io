@@ -23,7 +23,7 @@ async function getDB(nw='la-resources',condition=null){
     if(condition.where.length===1){
       qx=query(col,where(condition.where[0][0],condition.where[0][1],condition.where[0][2]));
     }
-    else if(conditon.where.length===2){
+    else if(condition.where.length===2){
       qx=query(col,and(where(condition.where[0][0],condition.where[0][1],condition.where[0][2]),where(condition.where[1][0],condition.where[1][1],condition.where[1][2])));
     }
   }
