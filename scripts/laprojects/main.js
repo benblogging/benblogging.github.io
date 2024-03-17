@@ -10,9 +10,9 @@ const firebaseConfig = {
   measurementId: "G-TJ6F9NWXR7"
 };
 const app = initializeApp(firebaseConfig);
-let condition={
+/*let condition={
   where:[["x","==","y"],["z","=="]]
-}
+}*/
 async function getDB(nw='la-resources',condition=null){
   let db=await getFirestore();
   let col=await collection(db,nw);
