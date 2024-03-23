@@ -10,9 +10,6 @@ const firebaseConfig = {
   measurementId: "G-TJ6F9NWXR7"
 };
 const app = initializeApp(firebaseConfig);
-/*let condition={
-  where:[["x","==","y"],["z","=="]]
-}*/
 async function getDB(nw='la-resources',condition=null){
   let db=await getFirestore();
   let col=await collection(db,nw);
@@ -37,4 +34,8 @@ export async function getFirestoreDB(dataName,condition=null){
     dbdata.push({ ...slg.data()})
   }
   return dbdata;
+}
+export async function viewFirestoreDB(dataName,condition=null){
+  let data=await getFirestoreDB(dataName,condition);
+  console.log(JSON.stringify(data,null,4));
 }
