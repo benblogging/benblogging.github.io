@@ -26,7 +26,7 @@ async function getDB(nw='la-resources',condition=null){
   let q=query(qx, orderBy("resource_id", "asc"))
   return q;
 }
-export async function getFirestoreDB(dataName,condition=null){
+export async function getFirestoreDB(dataName='la-resources',condition=null){
   let mpj=await getDocs(await getDB(dataName,condition));
   let mpjd=mpj.docs;
   let dbdata=[];
@@ -34,8 +34,4 @@ export async function getFirestoreDB(dataName,condition=null){
     dbdata.push({ ...slg.data()})
   }
   return dbdata;
-}
-export async function viewFirestoreDB(dataName,condition=null){
-  let data=await getFirestoreDB(dataName,condition);
-  console.log(JSON.stringify(data,null,4));
 }
